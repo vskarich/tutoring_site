@@ -1,8 +1,28 @@
-<form class="form-horizontal" action='' method="POST">
+
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-horizontal" action='/accounts/register' method="POST">
+  {% csrf_token %}
   <fieldset>
     <div id="legend">
       <legend class="">Register</legend>
     </div>
+    <div class="control-group">
+      <!-- First Name -->
+      <label class="control-label"  for="first_name">First Name</label>
+      <div class="controls">
+        <input type="text" id="first_name" name="first_name" placeholder="" class="input-xlarge">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Last Name -->
+      <label class="control-label"  for="last_name">Last Name</label>
+      <div class="controls">
+        <input type="text" id="last_name" name="last_name" placeholder="" class="input-xlarge">
+      </div>
+    </div>
+
     <div class="control-group">
       <!-- Username -->
       <label class="control-label"  for="username">Username</label>
@@ -25,7 +45,7 @@
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+        <input type="password" id="password1" name="password1" placeholder="" class="input-xlarge">
         <p class="help-block">Password should be at least 4 characters</p>
       </div>
     </div>
@@ -34,10 +54,12 @@
       <!-- Password -->
       <label class="control-label"  for="password_confirm">Password (Confirm)</label>
       <div class="controls">
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+        <input type="password" id="password2" name="password2" placeholder="" class="input-xlarge">
         <p class="help-block">Please confirm password</p>
       </div>
     </div>
+
+
 
     <div class="control-group">
       <!-- Button -->
@@ -47,3 +69,4 @@
     </div>
   </fieldset>
 </form>
+{% endblock %}

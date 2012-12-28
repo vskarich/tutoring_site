@@ -9,6 +9,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+LOGIN_REDIRECT_URL = '/accounts/my_account' # url to be redirected to after logging in
+LOGIN_URL = '/accounts/login' # url for the login page
+
 DATABASES = {
     'default': {
         'ENGINE':   'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -64,6 +67,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    "/Users/vskarich/django_projects/tutoring/tutoring_site/bootstrap",
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

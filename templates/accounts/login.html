@@ -2,26 +2,39 @@
 {% load url from future %}
 
 {% block content %}
-
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
+<form class="form-horizontal" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+  {% csrf_token %}
+  <fieldset>
+    <div id="legend">
+      <legend class="">Login</legend>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+      </div>
+    </div>
 
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+      </div>
+    </div>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" type="submit">Login</button>
+      </div>
+    </div>
+  </fieldset>
+  <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
 {% endblock %}
