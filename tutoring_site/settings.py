@@ -2,7 +2,11 @@
 import os
 SITE_ROOT = os.path.dirname(os.path.realpath('__file__'))
 
-DEBUG = True
+if os.environ.get('IS_HEROKU') is not None:
+    DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
+else:
+    DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
