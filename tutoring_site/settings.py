@@ -1,4 +1,9 @@
 # Django settings for tutoring_site project.
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath('__file__'))
+
+
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,9 +19,9 @@ LOGIN_URL = '/accounts/login' # url for the login page
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE':   'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME':     'tutoring',                 # Or path to database file if using sqlite3.
-        'USER':     'root',                      # Not used with sqlite3.
+        'USER':     'vskarich',                      # Not used with sqlite3.
         'PASSWORD': 'Cleo=11',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -67,7 +72,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    "/Users/vskarich/django_projects/tutoring/tutoring_site/bootstrap",
+    os.path.join(SITE_ROOT, 'bootstrap'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -110,7 +115,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/Users/vskarich/django_projects/tutoring/tutoring_site/templates",
+    os.path.join(SITE_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
