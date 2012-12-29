@@ -6,6 +6,7 @@ from django.core import urlresolvers
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
+from accounts.forms import RegistrationForm
 
 
 def logout_view(request):
@@ -23,16 +24,14 @@ def register(request):
     #import pdb; pdb.set_trace()
     if request.method == 'POST':
         postdata = request.POST.copy()
-        un = postdata.get('username','')
-        pw = postdata.get('password1','')
-        new_user = User.objects.create_user(un, postdata.get('email',''), pw)
-        new_user.first_name = postdata.get('first_name','')
-        new_user.last_name = postdata.get('last_name','')
-        new_user.save()
-        user = authenticate(username=un, password=pw)
-        if user and user.is_active:
-                login(request, user)
-                url = urlresolvers.reverse('accounts.views.my_account')
-                return HttpResponseRedirect(url)
+        form = RegistrationForm(postdata)
+        if form.is_valid():
+            form.save()
+            #import pdb; pdb.set_trace()
+            new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            if new_user and new_user.is_active:
+                    login(request, new_user)
+                    url = urlresolvers.reverse('accounts.views.my_account')
+                    return HttpResponseRedirect(url)
     else:
         return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
