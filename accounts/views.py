@@ -21,13 +21,11 @@ def signup_view(request):
     return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
 
 def register(request):
-    #import pdb; pdb.set_trace()
     if request.method == 'POST':
         postdata = request.POST.copy()
         form = RegistrationForm(postdata)
         if form.is_valid():
             form.save()
-            #import pdb; pdb.set_trace()
             new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
             if new_user and new_user.is_active:
                     login(request, new_user)
