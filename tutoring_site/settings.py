@@ -167,3 +167,6 @@ LOGGING = {
         },
     }
 }
+if os.environ.get('IS_HEROKU') is not None:
+  import dj_database_url
+  DATABASES['default'] =  dj_database_url.config()
