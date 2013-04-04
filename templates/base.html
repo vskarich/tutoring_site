@@ -40,16 +40,25 @@
               <li class="active"><a href="/">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
-              <li><a href="/accounts/signup">Signup</a></li>
-              <li><a href="/accounts/logout">Logout</a></li>
+              {% if not user.is_authenticated %}
+                <li><a href="/accounts/signup">Signup</a></li>
+              {% endif %}
               <li><a href="/accounts/my_account">Profile</a></li>
               <li>
+              {% if user.is_authenticated %}
+                <form class="navbar-form pull-right" action="/accounts/logout" method="GET">
+                   {% csrf_token %}
+                   <button type="submit" class="btn">Log Out</button>
+                </form>
+              {% else %}
                 <form class="navbar-form pull-right" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
                     {% csrf_token %}
                     <input class="span2" type="text" id="username" name="username" placeholder="Username">
                     <input class="span2" type="password" id="password" name="password" placeholder="Password">
                     <button type="submit" class="btn">Sign in</button>
                 </form>
+              {% endif %}
+
               </li>
             </ul>
           </div><!--/.nav-collapse -->
