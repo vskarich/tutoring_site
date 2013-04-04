@@ -21,6 +21,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     {% block extrahead %}
+        {% load url from future %}
     {% endblock %}
 
   </head>
@@ -40,9 +41,16 @@
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="/accounts/signup">Signup</a></li>
-              <li><a href="/accounts/login">Login</a></li>
               <li><a href="/accounts/logout">Logout</a></li>
               <li><a href="/accounts/my_account">Profile</a></li>
+              <li>
+                <form class="navbar-form pull-right" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+                    {% csrf_token %}
+                    <input class="span2" type="text" id="username" name="username" placeholder="Username">
+                    <input class="span2" type="password" id="password" name="password" placeholder="Password">
+                    <button type="submit" class="btn">Sign in</button>
+                </form>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
