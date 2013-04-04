@@ -44,7 +44,7 @@
                 <li><a href="/accounts/signup">Signup</a></li>
               {% endif %}
               <li><a href="/accounts/my_account">Profile</a></li>
-              <li>
+             </ul>
               {% if user.is_authenticated %}
                 <form class="navbar-form pull-right" action="/accounts/logout" method="GET">
                    {% csrf_token %}
@@ -58,9 +58,6 @@
                     <button type="submit" class="btn">Sign in</button>
                 </form>
               {% endif %}
-
-              </li>
-            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
