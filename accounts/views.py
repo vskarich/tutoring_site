@@ -5,9 +5,7 @@ from django.contrib.auth import logout
 from django.core import urlresolvers
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
-from accounts.forms import RegistrationForm
-
+from forms import RegistrationForm
 
 def logout_view(request):
     logout(request)
@@ -23,6 +21,7 @@ def signup_view(request):
 def register(request):
     if request.method == 'POST':
         postdata = request.POST.copy()
+        print postdata
         form = RegistrationForm(postdata)
         if form.is_valid():
             form.save()
