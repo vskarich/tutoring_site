@@ -2,10 +2,7 @@
 import os
 SITE_ROOT = os.path.dirname(os.path.realpath('__file__'))
 
-if os.environ.get('IS_HEROKU') is not None:
-    DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
-else:
-    DEBUG = True
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -18,12 +15,8 @@ MANAGERS = ADMINS
 LOGIN_REDIRECT_URL = '/accounts/my_account' # url to be redirected to after logging in
 LOGIN_URL = '/accounts/login' # url for the login page
 
-if os.environ.get('IS_HEROKU') is not None:
-    DB_USER = 'vskarich'
-    DB_ENGINE = 'postgresql_psycopg2'
-else:
-    DB_ENGINE = 'mysql'
-    DB_USER = 'tutoring_site'
+DB_ENGINE = 'mysql'
+DB_USER = 'tutoring_site'
 
 DATABASES = {
     'default': {
@@ -175,7 +168,3 @@ LOGGING = {
         },
     }
 }
-
-if os.environ.get('IS_HEROKU') is not None:
-  import dj_database_url
-  DATABASES['default'] =  dj_database_url.config()
