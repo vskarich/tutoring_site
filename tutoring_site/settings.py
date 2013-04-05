@@ -23,14 +23,14 @@ if os.environ.get('IS_HEROKU') is not None:
     DB_ENGINE = 'postgresql_psycopg2'
 else:
     DB_ENGINE = 'mysql'
-    DB_USER = 'root'
+    DB_USER = 'tutoring_site'
 
 DATABASES = {
     'default': {
         'ENGINE':   'django.db.backends.' + DB_ENGINE, # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME':     'tutoring',                 # Or path to database file if using sqlite3.
         'USER':     DB_USER,                      # Not used with sqlite3.
-        'PASSWORD': 'Cleo=11',                  # Not used with sqlite3.
+        'PASSWORD': '57443a4c052350a44638835d64fd66822f813319',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -80,7 +80,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'tutoring_site/bootstrap'),
+    os.path.join(SITE_ROOT, 'bootstrap'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(SITE_ROOT, 'tutoring_site/templates'),
+    os.path.join(SITE_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
