@@ -1,8 +1,8 @@
 # Django settings for tutoring_site project.
 import os
-SITE_ROOT = '/home/ubuntu/tutoring_site'
+SITE_ROOT = '/Users/vskarich/my_projects/tutoring_site/tutoring_site'
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -65,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/ubuntu/tutoring_site/static'
+STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
