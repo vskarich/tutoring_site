@@ -1,13 +1,15 @@
 # Django settings for tutoring_site project.
 import os
-SITE_ROOT = '/home/ubuntu/tutoring_site'
+SITE_ROOT = SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = ['www.lemonbush.com']
+
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Veljko Skarich', 'tutoringsitechunsepand@gmail.com'),
 )
 
 MANAGERS = ADMINS
