@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'accounts',
+    'sat_test'
 )
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
