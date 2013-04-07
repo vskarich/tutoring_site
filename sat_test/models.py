@@ -6,7 +6,7 @@ class Test(models.Model):
     date = models.DateField()
     location = models.CharField(max_length=50)
     is_practice_test = models.BooleanField(default=False)
-    
+
 
 class Score(models.Model):
     student = models.ForeignKey(UserProfile)
