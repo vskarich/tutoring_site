@@ -181,12 +181,6 @@ LOGGING = {
             'handlers': ['logfile'],
             'level': 'ERROR',
             'propagate': False,
-        },
-        # Your own app - this assumes all your logger names start with "myapp."
-        'myapp': {
-            'handlers': ['logfile'],
-            'level': 'WARNING', # Or maybe INFO or DEBUG
-            'propagate': False
-        },
+        }
     }
 }
