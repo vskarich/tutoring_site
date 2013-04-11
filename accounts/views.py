@@ -6,14 +6,35 @@ from django.core import urlresolvers
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from forms import RegistrationForm
+from sat_test.models import Test, Score
+from django.forms.models import model_to_dict
+
+
+
 
 def logout_view(request):
     logout(request)
     return render_to_response('accounts/logout.html', {}, context_instance=RequestContext(request))
 
+def get_score_context(score):
+    test = Test.objects.get(id=score.test_id)
+    score_context = model_to_dict(score)
+    score_context['total_score'] = score.verbal_score + score.math_score + score.analytic_score
+    score_context['test'] = model_to_dict(test)
+    score_context['test']['date'] = test.get_pretty_date()
+    return score_context
+
 @login_required
 def my_account(request):
-    return render_to_response('accounts/profile.html', {"first_name": request.user.first_name, "last_name": request.user.last_name}, context_instance=RequestContext(request))
+
+    user = request.user
+    user_context = model_to_dict(user)
+    score_context = {}
+    scores = Score.objects.filter(student=user)
+    score_context['scores'] =  [get_score_context(score) for score in scores]
+    context = dict(user_context.items() + score_context.items())
+
+    return render_to_response('accounts/profile.html', context, context_instance=RequestContext(request))
 
 def signup_view(request):
     return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))

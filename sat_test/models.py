@@ -9,6 +9,8 @@ class Test(models.Model):
 
     def __unicode__(self):
         return self.name + '  ' + self.date.strftime('%h %d, %Y')
+    def get_pretty_date(self):
+        return self.date.strftime('%h %d, %Y')
 
 
 class Score(models.Model):
