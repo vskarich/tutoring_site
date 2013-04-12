@@ -14,7 +14,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-LOGIN_REDIRECT_URL = '/accounts/my_account' # url to be redirected to after logging in
+LOGIN_REDIRECT_URL = '/account_redirect' # url to be redirected to after logging in
 LOGIN_URL = '/accounts/login' # url for the login page
 
 DB_ENGINE = 'mysql'

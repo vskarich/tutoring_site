@@ -8,6 +8,8 @@ from django.contrib.auth import login, authenticate
 from forms import RegistrationForm
 from sat_test.models import Test, Score
 from django.forms.models import model_to_dict
+from django.contrib.auth.models import User
+
 
 
 
@@ -25,9 +27,15 @@ def get_score_context(score):
     return score_context
 
 @login_required
-def my_account(request):
-
+def account_redirect(request):
     user = request.user
+    return HttpResponseRedirect('profile/%s' % user.username)
+
+
+@login_required
+def profile_view(request, username):
+
+    user = User.objects.get(username=username)
     user_context = model_to_dict(user)
     score_context = {}
     scores = Score.objects.filter(student=user)
@@ -42,7 +50,6 @@ def signup_view(request):
 def register(request):
     if request.method == 'POST':
         postdata = request.POST.copy()
-        print postdata
         form = RegistrationForm(postdata)
         if form.is_valid():
             form.save()
