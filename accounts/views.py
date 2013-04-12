@@ -55,8 +55,10 @@ def register(request):
             form.save()
             new_user = authenticate(username=request.POST['username'], password=request.POST['password1'])
             if new_user and new_user.is_active:
-                    login(request, new_user)
-                    url = urlresolvers.reverse('accounts.views.my_account')
-                    return HttpResponseRedirect(url)
+                login(request, new_user)
+                url = urlresolvers.reverse('accounts.views.account_redirect')
+                return HttpResponseRedirect(url)
+        else:
+            return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
     else:
         return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
