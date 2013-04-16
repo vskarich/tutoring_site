@@ -11,8 +11,8 @@
       <!-- First Name -->
       <label class="control-label"  for="first_name">{{names_dict.first_name}}</label>
       <div class="controls">
-        <input type="text" id="first_name" name="first_name" placeholder="" class="input-xlarge">
-          {% if errors.last_name %}
+        <input type="text" id="first_name" name="first_name" placeholder="" value="{{cleaned_data.first_name}}" class="input-xlarge">
+          {% if errors.first_name %}
           <p></p>
           <div class="alert alert-error span2">
               {{errors.first_name}}
@@ -25,7 +25,7 @@
       <!-- Last Name -->
       <label class="control-label"  for="last_name">{{names_dict.last_name}}</label>
       <div class="controls">
-        <input type="text" id="last_name" name="last_name" placeholder="" class="input-xlarge">
+        <input type="text" id="last_name" name="last_name" placeholder="" value="{{cleaned_data.last_name}}" class="input-xlarge">
           {% if errors.last_name %}
           <p></p>
           <div class="alert alert-error span2">
@@ -40,7 +40,7 @@
       <!-- Username -->
       <label class="control-label"  for="username">{{names_dict.username}}</label>
       <div class="controls">
-        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+        <input type="text" id="username" name="username" placeholder="" value="{{cleaned_data.username}}" class="input-xlarge">
         <p class="help-block">Username can contain any letters or numbers, without spaces</p>
           {% if errors.username %}
           <div class="alert alert-error span2">
@@ -54,8 +54,8 @@
       <!-- E-mail -->
       <label class="control-label" for="email">{{names_dict.email}}</label>
       <div class="controls">
-        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-      
+        <input type="text" id="email" name="email" placeholder="" value="{{cleaned_data.email}}" class="input-xlarge">
+
         <p class="help-block">Please provide your E-mail</p>
           {% if errors.email %}
           <div class="alert alert-error span2">

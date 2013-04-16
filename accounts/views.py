@@ -71,6 +71,11 @@ def register(request):
                 return HttpResponseRedirect(url)
         else:
             context['errors'] = {name:value for (name, value) in form._errors.items()}
+            context['cleaned_data'] = form.cleaned_data
+            for key, value in context['cleaned_data'].items():
+                if key in context['errors']:
+                    del context['cleaned_data'][key]
+
             return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
     else:
         return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
