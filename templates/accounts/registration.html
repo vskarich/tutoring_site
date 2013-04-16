@@ -9,53 +9,88 @@
     </div>
     <div class="control-group">
       <!-- First Name -->
-      <label class="control-label"  for="first_name">First Name</label>
+      <label class="control-label"  for="first_name">{{names_dict.first_name}}</label>
       <div class="controls">
         <input type="text" id="first_name" name="first_name" placeholder="" class="input-xlarge">
+          {% if errors.last_name %}
+          <p></p>
+          <div class="alert alert-error span2">
+              {{errors.first_name}}
+          </div>
+          {% endif %}
       </div>
     </div>
 
     <div class="control-group">
       <!-- Last Name -->
-      <label class="control-label"  for="last_name">Last Name</label>
+      <label class="control-label"  for="last_name">{{names_dict.last_name}}</label>
       <div class="controls">
         <input type="text" id="last_name" name="last_name" placeholder="" class="input-xlarge">
+          {% if errors.last_name %}
+          <p></p>
+          <div class="alert alert-error span2">
+              {{errors.last_name}}
+          </div>
+          {% endif %}
       </div>
+
     </div>
 
     <div class="control-group">
       <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
+      <label class="control-label"  for="username">{{names_dict.username}}</label>
       <div class="controls">
         <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
         <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+          {% if errors.username %}
+          <div class="alert alert-error span2">
+              {{errors.username}}
+          </div>
+          {% endif %}
       </div>
     </div>
 
     <div class="control-group">
       <!-- E-mail -->
-      <label class="control-label" for="email">E-mail</label>
+      <label class="control-label" for="email">{{names_dict.email}}</label>
       <div class="controls">
         <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+      
         <p class="help-block">Please provide your E-mail</p>
+          {% if errors.email %}
+          <div class="alert alert-error span2">
+              {{errors.email}}
+          </div>
+          {% endif %}
       </div>
+
     </div>
 
     <div class="control-group">
       <!-- Password-->
-      <label class="control-label" for="password">Password</label>
+      <label class="control-label" for="password">{{names_dict.password1}}</label>
       <div class="controls">
         <input type="password" id="password1" name="password1" placeholder="" class="input-xlarge">
         <p class="help-block">Password should be at least 4 characters</p>
+          {% if errors.password1 %}
+          <div class="alert alert-error span2">
+              {{errors.password1}}
+          </div>
+          {% endif %}
       </div>
     </div>
 
     <div class="control-group">
       <!-- Password -->
-      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <label class="control-label"  for="password_confirm">{{names_dict.password2}}</label>
       <div class="controls">
         <input type="password" id="password2" name="password2" placeholder="" class="input-xlarge">
         <p class="help-block">Please confirm password</p>
+          {% if errors.password2 %}
+          <div class="alert alert-error span2">
+              {{errors.password2}}
+          </div>
+          {% endif %}
       </div>
     </div>
 

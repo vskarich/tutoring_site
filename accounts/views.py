@@ -11,7 +11,14 @@ from django.forms.models import model_to_dict
 from django.contrib.auth.models import User
 
 
-
+form_fields_to_html_names = {
+    'email': 'Email',
+    'password1': 'Password',
+    'password2': 'Password (Confirm)',
+    'first_name': 'First Name',
+    'last_name': 'Last Name',
+    'username': 'Username'
+}
 
 
 def logout_view(request):
@@ -45,9 +52,13 @@ def profile_view(request, username):
     return render_to_response('accounts/profile.html', context, context_instance=RequestContext(request))
 
 def signup_view(request):
-    return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
+    context = {'errors':{}}
+    context['names_dict'] = form_fields_to_html_names
+    return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
 
 def register(request):
+    context = {'errors':{}}
+    context['names_dict'] = form_fields_to_html_names
     if request.method == 'POST':
         postdata = request.POST.copy()
         form = RegistrationForm(postdata)
@@ -59,6 +70,7 @@ def register(request):
                 url = urlresolvers.reverse('accounts.views.account_redirect')
                 return HttpResponseRedirect(url)
         else:
-            return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
+            context['errors'] = {name:value for (name, value) in form._errors.items()}
+            return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
     else:
-        return render_to_response('accounts/registration.html', {}, context_instance=RequestContext(request))
+        return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
