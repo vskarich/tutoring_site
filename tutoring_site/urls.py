@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,6 +17,8 @@ urlpatterns = patterns('',
     url(r'^accounts/register$', 'accounts.views.register'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
     url(r'^account_redirect$', 'accounts.views.account_redirect'),
+    url(r'^list$', 'uploads.views.list'),
+
     # url(r'^tutoring_site/', include('tutoring_site.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -22,6 +26,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

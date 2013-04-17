@@ -9,6 +9,8 @@ from forms import RegistrationForm
 from sat_test.models import Test, Score
 from django.forms.models import model_to_dict
 from django.contrib.auth.models import User
+from uploads.models import Document
+from uploads.forms import DocumentForm
 
 
 form_fields_to_html_names = {
@@ -49,6 +51,10 @@ def profile_view(request, username):
     score_context['scores'] =  [get_score_context(score) for score in scores]
     context = dict(user_context.items() + score_context.items())
 
+    form = DocumentForm()
+    documents = Document.objects.all()
+    context['documents'] = documents
+    context['form'] = form
     return render_to_response('accounts/profile.html', context, context_instance=RequestContext(request))
 
 def signup_view(request):
