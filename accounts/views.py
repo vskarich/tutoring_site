@@ -51,16 +51,20 @@ def profile_view(request, username):
     score_context['scores'] =  [get_score_context(score) for score in scores]
     context = dict(user_context.items() + score_context.items())
 
-    form = DocumentForm()
-    documents = Document.objects.all()
+    documents = prettify_doc_names(Document.objects.all())
     context['documents'] = documents
-    context['form'] = form
     return render_to_response('accounts/profile.html', context, context_instance=RequestContext(request))
 
 def signup_view(request):
     context = {'errors':{}}
     context['names_dict'] = form_fields_to_html_names
     return render_to_response('accounts/registration.html', context, context_instance=RequestContext(request))
+
+def prettify_doc_names(docs):
+    for doc in docs:
+        old_name = doc.docfile.name
+        doc.docfile.name = old_name.split('/')[1]
+    return docs
 
 def register(request):
     context = {'errors':{}}
