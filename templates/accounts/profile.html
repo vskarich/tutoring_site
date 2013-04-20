@@ -51,7 +51,7 @@
             {% for document in documents %}
                 <tr>
                     <td><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></td>
-                    <td><a href="{{ document.docfile.url }}">{{ document.docfile.date }}</a></td>
+                    <td>{{ document.docfile.date }}</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -51,7 +51,7 @@ def profile_view(request, username):
     score_context['scores'] =  [get_score_context(score) for score in scores]
     context = dict(user_context.items() + score_context.items())
 
-    documents = prettify_doc_names(Document.objects.all())
+    documents = prettify_doc_names(Document.objects.all().order_by('-date_created'))
     context['documents'] = documents
     return render_to_response('accounts/profile.html', context, context_instance=RequestContext(request))
 
@@ -64,6 +64,7 @@ def prettify_doc_names(docs):
     for doc in docs:
         old_name = doc.docfile.name
         doc.docfile.name = old_name.split('/')[1]
+        doc.docfile.date = doc.get_pretty_date()
     return docs
 
 def register(request):
