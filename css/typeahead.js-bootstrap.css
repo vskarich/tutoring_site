@@ -49,6 +49,7 @@
   margin: 0;
 }
 
-.tt-hint {
+.twitter-typeahead .tt-hint {
     max-width: 156px;
+    color: #C0C0C0;
 }
