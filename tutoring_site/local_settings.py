@@ -4,7 +4,7 @@ from settings import *
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '127.0.0.1:8000']
 
 def _require_debug_false(request):
     from django.conf import settings

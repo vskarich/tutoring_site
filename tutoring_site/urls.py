@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
     url(r'^account_redirect$', 'accounts.views.account_redirect'),
     url(r'^list$', 'uploads.views.list'),
+    url(r'^typeahead/prefetch.json$', 'typeahead.views.prefetch'),
 
     # url(r'^tutoring_site/', include('tutoring_site.foo.urls')),
 
