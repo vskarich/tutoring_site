@@ -106,23 +106,7 @@
     <script type="text/javascript" src="{{STATIC_URL}}jquery-1.9.1.js"></script>
     <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.js"></script>
     <script type="text/javascript" src="{{STATIC_URL}}typeahead.js"></script>
-    <script type="text/javascript" src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
-    <script>
-$(document).ready(function()
-{
-  //Handles menu drop down
-  $('.dropdown-menu').find('form').click(function (e) {
-        e.stopPropagation();
-  });
-  if(Hogan) {
-    $('input.typeahead-input').typeahead({
-    name: 'accounts',
-    prefetch:'/typeahead/prefetch.json',
-    template: '<p><a href={{url}}>{{value}}</a></p>',
-    engine: Hogan
-    });
-  }
-});
-</script>
+    <script type="text/javascript" src="{{STATIC_URL}}hogan.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}custom.js"></script>
   </body>
 </html>
