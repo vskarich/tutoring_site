@@ -50,11 +50,14 @@
                   <li><a href={{ "/profile/"|add:user.username}}>Profile</a></li>
               {% endif %}
               {% if user.is_authenticated and user.is_staff %}
-              <li>
-                  <form class="navbar-form pull-left" action={{ "/profile/"|add:user.username}}>
-                      <input type="text" class="span2 typeahead-input">
-                  </form>
-              </li>
+                <li>
+                    <form class="navbar-form pull-left" action={{ "/profile/"|add:user.username}}>
+                        <input type="text" class="span2 typeahead-input">
+                    </form>
+                </li>
+                <li>
+                  <a href="{% url 'admin:index' %}">View in Admin</a>
+                </li>
               {% endif %}
             </ul>
             <ul class="nav pull-right">

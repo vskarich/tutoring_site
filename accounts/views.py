@@ -45,7 +45,7 @@ def account_redirect(request):
 def profile_view(request, username):
 
     if not request.user.is_staff:
-       return HttpResponseRedirect('profile/%s' % request.user.username)
+       username = request.user.username
 
     user = User.objects.get(username=username)
     user_context = model_to_dict(user)
