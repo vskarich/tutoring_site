@@ -539,7 +539,7 @@
         });
         return Dataset;
         function compileTemplate(template, engine, valueKey) {
-            var wrapper = '<div class="tt-suggestion">%body</div>', renderFn, wrappedTemplate, compiledTemplate;
+            var wrapper = '<div class="tt-suggestion" tabindex="0">%body</div>', renderFn, wrappedTemplate, compiledTemplate;
             if (utils.isFunction(template)) {
                 renderFn = template;
             } else if (utils.isString(template)) {

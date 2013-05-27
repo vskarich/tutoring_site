@@ -6,7 +6,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['www.lemonbush.com']
+ALLOWED_HOSTS = ['www.lemonbush.com', 'localhost']
 
 ADMINS = (
      ('Veljko Skarich', 'tutoringsitechunsepand@gmail.com'),
@@ -42,7 +42,7 @@ TIME_ZONE = 'America/Los_Angeles'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -81,6 +81,7 @@ STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'css'),
     os.path.join(SITE_ROOT, 'javascript'),
     os.path.join(SITE_ROOT, 'images'),
+    os.path.join(SITE_ROOT, 'fonts'),
 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -111,9 +112,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware',
+    #'django.middleware.common.CommonMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -143,6 +144,7 @@ INSTALLED_APPS = (
     'sat_test',
     'uploads',
     'south',
+    'notes',
 )
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
